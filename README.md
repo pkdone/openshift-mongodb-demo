@@ -2,7 +2,7 @@
 
 **IMPORTANT: 04-Sep-2017 - Do NOT use this currently, as not secure by default, due to issue with mounting Kubernetes secrets volumes with correct file permissions from within current Minishift's Kubernetes environment - updates to follow shortly** 
 
-An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the [OpenShift](https://www.openshift.org/) Kubernetes platform. This example has been built and tested with [Minishift](https://github.com/minishift/minishift) specifically, where a single-node OpenShift cluster is run inside a VM, locally, however, it should work in any OpenShift environment. Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
+An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the [OpenShift](https://www.openshift.org/) Kubernetes platform. This example has been built and tested with [Minishift](https://github.com/minishift/minishift) specifically, where a single-node OpenShift cluster is run locally inside a VM, however, it should work in any OpenShift environment. Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
 For further background information on what these scripts and resource files do, plus general information about running MongoDB with Kubernetes, see: [http://k8smongodb.net/](http://k8smongodb.net/)
 
@@ -21,13 +21,13 @@ Ensure the following dependencies are already fulfilled:
     ```
 
 2. The [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) command-line tool for Kubernetes has been installed.
-3. The local Workstation/Laptop environment has been configured to have the [OpenShift Client](https://docs.openshift.com/enterprise/3.0/cli_reference/get_started_cli.html) tool, "oc", is visible on the command-line/shell path. For help on how setup this path, if using Minishift, run the following command:
+3. The local Workstation/Laptop environment has been configured so that the [OpenShift Client](https://docs.openshift.com/enterprise/3.0/cli_reference/get_started_cli.html) tool, "oc", is visible on the command-line/shell path. For help on how setup this path, if using Minishift, run the following command:
 
     ```
     $ minishift oc-env
     ```
 
-4. Authenticate the 'oc' tool with the OpenShift remote/local deployment and change to the Kubernetes project with the namespace "default". For example:
+4. Authenticate the 'oc' tool with the OpenShift remote/local deployment and change to the Kubernetes project that has the default namespace. For example:
 
     ```
     $ oc login -u system:admin
