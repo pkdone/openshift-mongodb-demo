@@ -1,6 +1,6 @@
 # MongoDB Deployment Demo for Kubernetes on OpenShift
 
-**IMPORTANT: 04-Sep-2017 - Do NOT use this currently, as not secure by default, due to issue with mounting Kubernetes secrets volumes with correct file permissions from within current Minishift's Kubernetes environment - updates to follow shortly** 
+**IMPORTANT: 04-Sep-2017 - Do NOT use this currently, as not secure by default, due to issue with mounting Kubernetes secrets volumes with correct file permissions from within current Minishift's Kubernetes environment - waiting for this [Minishift fix](https://github.com/minishift/minishift/issues/1343)** 
 
 An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the [OpenShift](https://www.openshift.org/) Kubernetes platform. This example has been built and tested with [Minishift](https://github.com/minishift/minishift) specifically, where a single-node OpenShift cluster is run locally inside a VM, however, it should work in any OpenShift environment. Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
@@ -135,6 +135,6 @@ If you are using the Minishift version of OpenShift and want to shutdown and rem
 
 ### 2.2 Factors To Be Potentially Addressed In The Future By This Project
 
-* Securing MongoDB by default for new deployments _(Pending resolving Minishift issue and then re-enabling 'auth' to apply to all types of OpenShift environments)_
+* Securing MongoDB by default for new deployments _(Pending resolving [Minishift issue](https://github.com/minishift/minishift/issues/1343) and then re-enabling 'auth' to apply to all types of OpenShift environments)_
 * Disabling Transparent Huge Pages to improve performance
 * Leveraging XFS filesystem for data file storage to improve performance
