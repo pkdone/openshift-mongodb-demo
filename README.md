@@ -1,6 +1,6 @@
 # MongoDB Deployment Demo for Kubernetes on OpenShift
 
-**IMPORTANT: 04-Sep-2017 - Do NOT use this currently, as not secure by default, due to issue with mounting Kubernetes secrets volumes with correct file permissions from within current Minishift's Kubernetes environment - waiting for this [Minishift fix](https://github.com/minishift/minishift/issues/1343)** 
+**IMPORTANT: 04-Sep-2017 - Do NOT use this currently, as not secure by default, due to issue with mounting Kubernetes secrets volumes with correct file permissions from within current Minishift's Kubernetes environment - waiting for this [Minishift/OpenShift fix](https://github.com/minishift/minishift/issues/1343)** 
 
 An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the [OpenShift](https://www.openshift.org/) Kubernetes platform. This example has been built and tested with [Minishift](https://github.com/minishift/minishift) specifically, where a single-node OpenShift cluster is run locally inside a VM, however, it should work in any OpenShift environment. Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
