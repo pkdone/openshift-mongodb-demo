@@ -1,7 +1,5 @@
 # MongoDB Deployment Demo for Kubernetes on OpenShift
 
-**IMPORTANT: 04-Sep-2017 - Do NOT use this currently, as not secure by default, due to issue with mounting Kubernetes secrets volumes with correct file permissions from within current Minishift's Kubernetes environment - waiting for this [Minishift/OpenShift fix](https://github.com/minishift/minishift/issues/1343)** 
-
 An example project demonstrating the deployment of a MongoDB Replica Set via Kubernetes on the [OpenShift](https://www.openshift.org/) Kubernetes platform. This example has been built and tested with [Minishift](https://github.com/minishift/minishift) specifically, where a single-node OpenShift cluster is run locally inside a VM, however, it should work in any OpenShift environment. Contains example Kubernetes YAML resource files (in the 'resource' folder) and associated Kubernetes based Bash scripts (in the 'scripts' folder) to configure the environment and deploy a MongoDB Replica Set.
 
 For further background information on what these scripts and resource files do, plus general information about running MongoDB with Kubernetes, see: [http://k8smongodb.net/](http://k8smongodb.net/)
@@ -34,6 +32,15 @@ Ensure the following dependencies are already fulfilled:
     $ oc project default
     $ kubectl get all
     ```
+
+5. **WORKAROUND (04-Oct-2017):** Due to an [OpenShift issue](https://github.com/openshift/origin/issues/16424) & associated [Minishift issue](https://github.com/minishift/minishift/issues/1343), to enable the MongoDB deployment to access the "secret" keyfile with the correct persmissions, the following command has to be run before deploying the Kubernetes resources:
+
+    ```
+    oc adm policy add-scc-to-user anyuid system:serviceaccount:default:default
+    ```
+
+ **NOTE: The resulting depployment is less secure when running with the security constraint 'anyuid', compared with the default security constraint of 'restricted'.** 
+
 
 ### 1.2 Main Deployment Steps 
 
@@ -128,6 +135,7 @@ If you are using the Minishift version of OpenShift and want to shutdown and rem
 * Deployment of a MongoDB to an OpenShift Kubernetes platform
 * Use of Kubernetes StatefulSets and PersistentVolumeClaims to ensure data is not lost when containers are recycled
 * Proper configuration of a MongoDB Replica Set for full resiliency
+* Securing MongoDB by default for new deployments _(With the caveat that an insecure [OpenShift workaround](https://github.com/openshift/origin/issues/16424) is currently being employed)_
 * Disabling NUMA to improve performance _(Disabled by default by Minishift and it's default VM (boot2docker) - requires uncommenting two lines in mongodb-service.yaml before deploying to other OpenShift type environments)_
 * Controlling CPU & RAM Resource Allocation
 * Correctly configuring WiredTiger Cache Size in containers
@@ -135,6 +143,5 @@ If you are using the Minishift version of OpenShift and want to shutdown and rem
 
 ### 2.2 Factors To Be Potentially Addressed In The Future By This Project
 
-* Securing MongoDB by default for new deployments _(Pending resolving [Minishift issue](https://github.com/minishift/minishift/issues/1343) and then re-enabling 'auth' to apply to all types of OpenShift environments)_
 * Disabling Transparent Huge Pages to improve performance
 * Leveraging XFS filesystem for data file storage to improve performance

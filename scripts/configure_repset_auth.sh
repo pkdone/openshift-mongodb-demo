@@ -27,7 +27,6 @@ kubectl exec mongod-0 -c mongod-container -- mongo --eval 'rs.status();'
 
 # Create the admin user (this will automatically disable the localhost exception)
 echo "Creating user: 'main_admin'"
-echo "TODO: Re-enable user creation once fixed secrets volume mapping and renabling --auth as a result"
-#kubectl exec mongod-0 -c mongod-container -- mongo --eval 'db.getSiblingDB("admin").createUser({user:"main_admin",pwd:"'"${1}"'",roles:[{role:"root",db:"admin"}]});'
+kubectl exec mongod-0 -c mongod-container -- mongo --eval 'db.getSiblingDB("admin").createUser({user:"main_admin",pwd:"'"${1}"'",roles:[{role:"root",db:"admin"}]});'
 echo
 
