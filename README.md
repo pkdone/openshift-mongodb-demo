@@ -39,7 +39,7 @@ Ensure the following dependencies are already fulfilled:
     oc adm policy add-scc-to-user anyuid system:serviceaccount:default:default
     ```
 
- **NOTE: The resulting depployment is less secure when running with the security constraint 'anyuid', compared with the default security constraint of 'restricted'.** 
+&nbsp;&nbsp;&nbsp;**NOTE: The resulting depployment is less secure when running with the security constraint 'anyuid', compared with the default security constraint of 'restricted'.** 
 
 
 ### 1.2 Main Deployment Steps 
