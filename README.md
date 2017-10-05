@@ -39,7 +39,7 @@ Ensure the following dependencies are already fulfilled:
     oc adm policy add-scc-to-user anyuid system:serviceaccount:default:default
     ```
 
-&nbsp;&nbsp;&nbsp;**NOTE: The resulting depployment is less secure when running with the security constraint 'anyuid', compared with the default security constraint of 'restricted'.** 
+&nbsp;&nbsp;&nbsp;**NOTE: The resulting deployment is less secure when running with the security constraint 'anyuid', compared with the default security constraint of 'restricted'.** 
 
 
 ### 1.2 Main Deployment Steps 
@@ -135,8 +135,8 @@ If you are using the Minishift version of OpenShift and want to shutdown and rem
 * Deployment of a MongoDB to an OpenShift Kubernetes platform
 * Use of Kubernetes StatefulSets and PersistentVolumeClaims to ensure data is not lost when containers are recycled
 * Proper configuration of a MongoDB Replica Set for full resiliency
-* Securing MongoDB by default for new deployments _(With the caveat that an insecure [OpenShift workaround](https://github.com/openshift/origin/issues/16424) is currently being employed)_
-* Disabling NUMA to improve performance _(Disabled by default by Minishift and it's default VM (boot2docker) - requires uncommenting two lines in mongodb-service.yaml before deploying to other OpenShift type environments)_
+* Securing MongoDB by default for new deployments _(with the caveat that an insecure [OpenShift workaround](https://github.com/openshift/origin/issues/16424) is currently being employed)_
+* Disabling NUMA to improve performance _(disabled by default by Minishift and it's default VM (boot2docker) - requires uncommenting two lines in mongodb-service.yaml before deploying to other OpenShift type environments)_
 * Controlling CPU & RAM Resource Allocation
 * Correctly configuring WiredTiger Cache Size in containers
 * Controlling Anti-Affinity for Mongod Replicas to avoid a Single Point of Failure _(although if using Minishift there is only one host node, so in those situations all Mongod Replicas will land on the same host)_
